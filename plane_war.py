@@ -194,13 +194,39 @@ class PlaneGame:
         bc = pygame.image.load(get_resource_path('resources/image/bc.jpg'))
         self.background = pygame.transform.scale(bc, (SCREEN_WIDTH, SCREEN_HEIGHT)).convert_alpha()
         self.game_over = pygame.image.load(get_resource_path('resources/image/gameover.png'))
+        # 加载启动界面背景
+        start_bc = pygame.image.load(get_resource_path('resources/image/plane-code.png'))
+        self.start_background = pygame.transform.scale(start_bc, (SCREEN_WIDTH, SCREEN_HEIGHT)).convert_alpha()
 
-
+    def show_start_screen(self):
+        """
+        显示启动界面
+        """
+        start_button = Button(SCREEN_WIDTH//2 - 100, SCREEN_HEIGHT - 200, 200, 50, "开始游戏")
+        running = True
+        clock = pygame.time.Clock()
         
+        while running:
+            self.screen.fill(0)
+            self.screen.blit(self.start_background, (0, 0))
+            start_button.draw(self.screen)
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.exit_game()
+                if start_button.handle_event(event):
+                    running = False
+                    
+            pygame.display.update()
+            clock.tick(60)
+    
     def run(self):
         """
         游戏主循环
         """
+        # 显示启动界面
+        self.show_start_screen()
+
         if not self.config.get("serial_config", None) \
             or not self.config.get("serial_config").get("port", None) \
             or not self.config.get("serial_config").get("baudrate", None):
