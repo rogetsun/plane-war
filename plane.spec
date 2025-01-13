@@ -10,9 +10,9 @@ a = Analysis(
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
-    noarchive=False,
-    optimize=0,
+    excludes=['matplotlib', 'tkinter', 'numpy', 'PIL._tkinter_finder'],
+    noarchive=True,
+    optimize=2,
 )
 pyz = PYZ(a.pure)
 
