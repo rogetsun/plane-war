@@ -52,7 +52,8 @@ class Button:
         self.rect = pygame.Rect(x, y, w, h)
         self.color = pygame.Color('dodgerblue2')
         self.text = text
-        self.font = pygame.font.Font(None, 32)
+        self.font = get_sys_font(32)
+        self.border_radius = 8  # 添加圆角半径属性
         
     def handle_event(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -61,7 +62,8 @@ class Button:
         return False
         
     def draw(self, screen):
-        pygame.draw.rect(screen, self.color, self.rect)
+        # 绘制圆角矩形
+        pygame.draw.rect(screen, self.color, self.rect, border_radius=self.border_radius)
         txt_surface = self.font.render(self.text, True, (255, 255, 255))
         text_rect = txt_surface.get_rect(center=self.rect.center)
         screen.blit(txt_surface, text_rect)
