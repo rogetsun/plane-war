@@ -19,7 +19,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
+output/
 # IDE
 .idea/
 .vscode/
@@ -30,6 +30,7 @@ wheels/
 venv/
 env/
 ENV/
+.conda/
 
 # 其他
 .DS_Store
