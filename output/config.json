@@ -1,0 +1,16 @@
+{
+    "serial_config": {
+        "port": "com7",
+        "baudrate": 9600
+    },
+    "game_scroes": [
+        {
+            "score": 200,
+            "time": "2024-11-15 03:34:59"
+        },
+        {
+            "score": 0,
+            "time": "2024-11-15 03:35:06"
+        }
+    ]
+}
